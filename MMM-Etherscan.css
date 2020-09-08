@@ -1,0 +1,30 @@
+/*
+ *
+ * MMM-Etherscan
+ *
+ * Marc Helpenstein <helpi9007@gmail.com>
+ * MIT Licensed.
+ *
+ * Custom here your css module
+ *
+ */
+
+ .mmm-etherscan-table * {
+    padding-left: 20px;
+    padding-top: 5px;
+}
+.mmm-etherscan-table tr.border-bottom th {
+    border-bottom: 1px solid #666;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+.mmm-etherscan-table *:first-child {
+    padding-left: 0;
+}
+.mmm-etherscan-table .crit {
+    color: red;
+}
+
+.MMM-etherscan img{
+    filter: grayscale(100%);
+}
