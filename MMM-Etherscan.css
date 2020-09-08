@@ -24,6 +24,13 @@
 .mmm-etherscan-table .crit {
     color: red;
 }
+.mmm-etherscan-table .label {
+    margin-top: 0cm;
+    font-size: 10px;
+    float: left;
+    width: 10em;
+    margin-right: 1em;
+  }
 
 .MMM-etherscan img{
     filter: grayscale(100%);
