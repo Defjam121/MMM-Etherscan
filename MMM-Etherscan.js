@@ -119,7 +119,7 @@ Module.register("MMM-Etherscan", {
     getDom: function () {
         var self = this;
         var wrapper = document.createElement("div");
-        
+
 
         if (this.config.apiKey == "" || this.config.addresses.length == 0) {
             console.log("Please check config");
@@ -322,7 +322,7 @@ Module.register("MMM-Etherscan", {
         console.log(sender);
         */
     },
-    
+
     /**
      * @description Save blockdata from node_helper
      * @param {*} notification 

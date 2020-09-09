@@ -5,10 +5,10 @@
  * MIT Licensed.
  */
 
- /**
- * @external node-fetch
- * @see https://www.npmjs.com/package/node-fetch
- */
+/**
+* @external node-fetch
+* @see https://www.npmjs.com/package/node-fetch
+*/
 const fetch = require('node-fetch');
 
 var NodeHelper = require("node_helper");
@@ -25,11 +25,7 @@ module.exports = NodeHelper.create({
 	 */
     socketNotificationReceived: async function (notification, payload) {
         if (notification === "GETBLOCK") {
-            //console.log("Working notification system. Notification:", notification, "payload: ", payload);
-            // Send notification
-            // Send test
             this.getBlockData(payload);
-            this.sendNotificationTest(this.anotherFunction()); //Is possible send objects :)
         }
 
     },
@@ -49,12 +45,12 @@ module.exports = NodeHelper.create({
         });
     },
 
-    getBlockData: async function(config) {
+    getBlockData: async function (config) {
         let blocks = [];
 
         for (let index = 0; index < config["addresses"].length; index++) {
             const address = config["addresses"][index];
-            const response = await fetch("https://api.etherscan.io/api?module=account&action=txlist&address="+ address["address"] +"&startblock=0&endblock=99999999&sort=asc&apikey="+ config["apiKey"]);
+            const response = await fetch("https://api.etherscan.io/api?module=account&action=txlist&address=" + address["address"] + "&startblock=0&endblock=99999999&sort=asc&apikey=" + config["apiKey"]);
             const parsedResponse = await response.json();
             let lastBlock = parsedResponse.result[parsedResponse.result.length - 1]
             let entry = {
