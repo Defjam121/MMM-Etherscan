@@ -40,6 +40,9 @@ Module.register("MMM-Etherscan", {
         }, this.config.updateInterval);
     },
 
+    /**
+     * @description Return the api link
+     */
     getBalanceUrl: function () {
         return "https://api.etherscan.io/api?module=account&action=balancemulti&address=" + this.getAddresses() + "&tag=latest&apikey=" + this.config.apiKey
     },
@@ -77,6 +80,9 @@ Module.register("MMM-Etherscan", {
         dataRequest.send();
     },
 
+    /**
+     * @description Return wallet addresses
+     */
     getAddresses: function () {
         let stringAddress = "";
         for (let index = 0; index < this.config.addresses.length; index++) {
@@ -107,6 +113,9 @@ Module.register("MMM-Etherscan", {
         }, nextLoad);
     },
 
+    /**
+     * @description Create table
+     */
     getDom: function () {
         var self = this;
         var wrapper = document.createElement("div");
@@ -127,24 +136,6 @@ Module.register("MMM-Etherscan", {
             tableWrapper.appendChild(trWrapper);
             divWrapper.appendChild(tableWrapper);
             wrapper.appendChild(divWrapper);
-            /*
-            if (this.config.showLastBlock && this.blockData) {
-                var divWrapper = document.createElement("div");
-                divWrapper.className = "mmm-etherscan-label";
-                var labelDataRequest = document.createElement("label");
-                labelDataRequest.innerHTML = "Last Block";
-                let tableWrapper = document.createElement("table");
-                tableWrapper.className = "small mmm-ethos-table";
-                divWrapper.appendChild(labelDataRequest);
-                let tableHeadBlock = this.createTableBlockHead();
-                tableWrapper.appendChild(tableHeadBlock);
-                let trWrapperBlock = this.createTableBlockData(tableWrapper);
-                tableWrapper.appendChild(trWrapperBlock);
-                divWrapper.appendChild(tableWrapper);
-                wrapper.appendChild(divWrapper);
-            }
-            */
-
         }
         return wrapper;
     },
@@ -259,6 +250,11 @@ Module.register("MMM-Etherscan", {
         return trWrapper;
     },
 
+    /**
+     * 
+     * @param {int} UNIX_timestamp 
+     * @description Convert timestamp to Date
+     */
     timeConverter: function (UNIX_timestamp) {
         var a = new Date(UNIX_timestamp * 1000);
         var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -272,10 +268,19 @@ Module.register("MMM-Etherscan", {
         return time;
     },
 
+    /**
+     * @description Convert the balance number
+     * @param {int} balance Balance number
+     * 
+     */
     getBalance: function (balance) {
         return (parseInt(balance) / 1000000000000000000).toFixed(3);
     },
 
+    /**
+     * @description Split the wallet address for the table
+     * @param {String} address Wallet address
+     */
     splitAddress: function (address) {
         let stringAddress = "";
         for (let index = 2; index < 7; index++) {
@@ -283,10 +288,6 @@ Module.register("MMM-Etherscan", {
             stringAddress += element;
         }
         return stringAddress;
-    },
-
-    getScripts: function () {
-        return [];
     },
 
     getStyles: function () {
@@ -321,7 +322,12 @@ Module.register("MMM-Etherscan", {
         console.log(sender);
         */
     },
-    // socketNotificationReceived from helper
+    
+    /**
+     * @description Save blockdata from node_helper
+     * @param {*} notification 
+     * @param {*} payload 
+     */
     socketNotificationReceived: function (notification, payload) {
         if (notification === "BLOCKDATA") {
             // set dataNotification
