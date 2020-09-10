@@ -32,13 +32,13 @@ module.exports = NodeHelper.create({
 
     // Example function send notification test
     sendNotificationTest: function (payload) {
-        this.sendSocketNotification("MMM-TestNodeHelper-NOTIFICATION_TEST", "payload test node helper");
+        this.sendSocketNotification("MMM-Etherscan-NOTIFICATION_TEST", "payload test node helper");
     },
 
     // this you can create extra routes for your module
     extraRoutes: function () {
         var self = this;
-        this.expressApp.get("/MMM-TestNodeHelper/extra_route", function (req, res) {
+        this.expressApp.get("/MMM-Etherscan/extra_route", function (req, res) {
             // call another function
             values = self.anotherFunction();
             res.send(values);
@@ -61,7 +61,6 @@ module.exports = NodeHelper.create({
             blocks.push(entry);
         }
         this.sendSocketNotification("BLOCKDATA", blocks);
-        //https://api.etherscan.io/api?module=account&action=txlist&address=0x0D177B47dbc3B0747001A47fA0A9F3e9654A4876&startblock=0&endblock=99999999&sort=asc&apikey=R6CN5DWYDHHX4H4DED6AVZMJRFCCX3YJ23
     },
 
     // Test another function
