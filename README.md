@@ -7,7 +7,7 @@ This module shows wallet stats from https://etherscan.io api.<br/> <br/>
 ## Installing the module
 Clone this repository in your `~/MagicMirror/modules/`:
 
-`git clone https://github.com/Defjam121/MMM-Etherscan`
+`git clone https://github.com/Helpi90/MMM-Etherscan`
 
 
 ## Using the module
